@@ -255,3 +255,35 @@ a:hover { color: var(--stamp); }
   h1 { font-size: 1.4rem; }
   .plate .caption { font-size: 0.62rem; }
 }
+
+/* ---- fullscreen plate view (pure CSS :target) ---- */
+.plate a { cursor: zoom-in; }
+.plate-full {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(12, 9, 5, 0.96);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.plate-full:target { display: flex; }
+.plate-full img {
+  max-width: 97vw;
+  max-height: 97vh;
+  width: auto;
+  height: auto;
+  display: block;
+  box-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+.plate-full-close {
+  position: fixed;
+  top: 1rem; right: 1.4rem;
+  z-index: 91;
+  font-size: 2rem;
+  line-height: 1;
+  color: #efe8d6;
+  text-decoration: none;
+  font-family: "Courier Prime", "Courier New", monospace;
+}

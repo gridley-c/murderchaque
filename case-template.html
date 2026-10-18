@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>[[CASE_ID]] — [[TITLE]] | Chaque Collection</title>
 <meta name="description" content="[[ALT]]">
-<link rel="stylesheet" href="/style.css?v=5">
+<link rel="stylesheet" href="/style.css?v=6">
 </head>
 <body>
 <div class="sheet">
@@ -17,11 +17,15 @@
   <p class="muted small mono-up">File no. [[CASE_ID]] · Recorded [[DATE]] ·
   Location: [[LOCATION]] · Status: [[STATUS]]</p>
 [[HAND]]
-  <figure class="plate[[PLATE_CLASS]]">
+  <figure class="plate[[PLATE_CLASS]]" id="plate">
     <span class="tape tl"></span><span class="tape tr"></span>
-    <img src="/photos/[[PHOTO]]" alt="[[ALT]]">
+    <a href="#plate-full" aria-label="View full size"><img src="/photos/[[PHOTO]]" alt="[[ALT]]"></a>
     <figcaption class="caption">[[CAPTION]]</figcaption>
   </figure>
+  <div class="plate-full" id="plate-full">
+    <a class="plate-full-close" href="#plate" aria-label="Close full view">×</a>
+    <a href="#plate" aria-label="Close full view"><img src="/photos/[[PHOTO]]" alt="[[ALT]]"></a>
+  </div>
   <p class="muted small" style="margin-top:0.6rem;">Exhibit A — retained in original condition. [[EXIF_NOTE]]</p>
 
   <h2>Property notes</h2>
