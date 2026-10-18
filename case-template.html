@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[[CASE_ID]] — [[TITLE]] | Chaque Collection</title>
+<meta name="description" content="[[ALT]]">
+<link rel="stylesheet" href="/style.css?v=5">
+</head>
+<body>
+<div class="sheet">
+
+  <p class="small" style="margin-bottom:1.4rem;"><a href="/">‹ Return to the ledger</a></p>
+  <p class="kicker">Case file · do not circulate · [[CASE_ID]]</p>
+  <h1>[[TITLE]]</h1>
+  <div class="rule"></div>
+  <p class="muted small mono-up">File no. [[CASE_ID]] · Recorded [[DATE]] ·
+  Location: [[LOCATION]] · Status: [[STATUS]]</p>
+[[HAND]]
+  <figure class="plate[[PLATE_CLASS]]">
+    <span class="tape tl"></span><span class="tape tr"></span>
+    <img src="/photos/[[PHOTO]]" alt="[[ALT]]">
+    <figcaption class="caption">[[CAPTION]]</figcaption>
+  </figure>
+  <p class="muted small" style="margin-top:0.6rem;">Exhibit A — retained in original condition. [[EXIF_NOTE]]</p>
+
+  <h2>Property notes</h2>
+[[PROPERTY_NOTES]]
+
+  <h2>History of the incident</h2>
+[[HISTORY]]
+
+  <p class="sig">
+    <span class="line"></span><br>
+    Custodian of records — <span class="redact">REDACTED</span>
+  </p>
+
+  <div class="colophon">
+    <span><a href="/">‹ Return to the ledger</a></span>
+    <span><span class="stamp small-stamp">[[STAMP]]</span></span>
+  </div>
+
+</div>
+</body>
+</html>

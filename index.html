@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ground Book — Chaque Collection</title>
+<meta name="description" content="Case records of condemned dwellings. Collected, noted, and quietly filed.">
+<link rel="stylesheet" href="/style.css?v=5">
+</head>
+<body>
+<div class="sheet">
+
+  <p class="kicker">Ministry records pencil · interim status · do not circulate</p>
+  <h1>Chaque Collection</h1>
+  <div class="rule"></div>
+  <p class="muted">Case records of condemned dwellings — shacks, huts, barns, crofts and
+  houses that hold a final air about them. Each structure has been photographed,
+  described, and its history (where obtainable) entered into this ledger.</p>
+  <p class="muted">The collection is ongoing. Entries appear in the order they are
+  recorded, not in the order of their events.</p>
+
+  <div class="folder-tab">Index of cases</div>
+  <h2>Ledger of open &amp; closed matters</h2>
+
+  <div id="cases">
+    <p class="muted small" id="no-cases">No cases yet recorded. The index awaits its first entry.</p>
+  </div>
+
+  <p class="sig">
+    <span class="line"></span><br>
+    Custodian of records — <span class="redact">REDACTED</span><br>
+    <span class="small muted">Filing performed under the authority of the collection. Errors
+    in the account are mine alone.</span>
+  </p>
+
+  <div class="colophon">
+    <span>Chaque Collection · est. 17 October 2026</span>
+    <span><span class="stamp small-stamp">Confidential</span></span>
+  </div>
+
+</div>
+
+<script>
+/* Index of cases served from a tiny registry file so the page stays
+   fully static (no build step; GitHub Pages serves it as-is). */
+fetch('/cases.json')
+  .then(function (r) { if (!r.ok) throw r; return r.json(); })
+  .then(function (cases) {
+    if (!cases.length) return;
+    document.getElementById('no-cases').remove();
+    var ul = document.createElement('ul');
+    ul.className = 'index-list';
+    cases.slice().reverse().forEach(function (c) {
+      var li = document.createElement('li');
+      var aImg = document.createElement('a');
+      aImg.href = '/cases/' + c.slug + '.html';
+      aImg.className = 'thumb-link';
+      var img = document.createElement('img');
+      img.className = 'thumb';
+      img.loading = 'lazy';
+      img.src = '/photos/' + c.slug + '.jpg';
+      img.alt = '';
+      aImg.appendChild(img);
+      li.appendChild(aImg);
+      var meta = document.createElement('div');
+      meta.className = 'case-meta';
+      var line1 = document.createElement('p');
+      line1.className = 'fno';
+      line1.style.margin = '0';
+      var a = document.createElement('a');
+      a.href = '/cases/' + c.slug + '.html';
+      a.textContent = c.id + ' - ' + c.title;
+      line1.appendChild(a);
+      meta.appendChild(line1);
+      var loc = document.createElement('span');
+      loc.className = 'floc';
+      loc.textContent = (c.location || '').toUpperCase();
+      meta.appendChild(loc);
+      li.appendChild(meta);
+      ul.appendChild(li);
+    });
+    document.getElementById('cases').appendChild(ul);
+  })
+  .catch(function () { /* leave the "no cases" note in place */ });
+</script>
+</body>
+</html>
